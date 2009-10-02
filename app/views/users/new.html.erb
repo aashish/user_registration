@@ -1,0 +1,38 @@
+<h1>New user</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+  <div id="avaliability" style="color:#999; font:smaller">
+</div>
+    <div id="check_unique_login">
+      <%= button_to_remote 'check avaliability',
+                    :url => { :action => 'check_for_unique_login', :login => @user.login} %>
+    </div></p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :confirm_password %><br />
+    <input id="confirm_password"  onchange="check_for_match();"type="password" size="30" name="confirm_password"/>
+  </p>
+ <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :email %><br />
+     <input id="user_email" name="user[email]" size="30" type="text" onblur="validate_email();" />
+  <div id="email_format" style="color:#FA351F; font:smaller">
+</div>
+</p>
+  <p>
+   <input id="user_submit" name="commit" onclick="encrypt_password();"type="submit" value="Create" />
+  </p>
+<% end %>
+
+<%= link_to 'Back', users_path %>

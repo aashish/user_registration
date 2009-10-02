@@ -1,0 +1,7 @@
+   p  "ffffffff"
+ page.replace_html  'avaliability', "<em>#{@user[:message]}</em>"
+p  "ss"
+   page.visual_effect :highlight, 'avaliability'
+
+ p  "vvvv"
+ 
